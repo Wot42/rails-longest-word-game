@@ -1,0 +1,22 @@
+<div class="container">
+  <br>
+  <h1>New Game</h1>
+  <br>
+  <% @letters.each do |letter| %>
+    <div class='btn btn-primary'> <%=letter%>. </div>
+  <% end %>
+  <br>
+  <p>whats the longets word you can find?</p>
+  <form action="/score" method="POST" data-turbo="false">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <%= hidden_field_tag :letters, @letters %>
+    <div class="row">
+      <div class="col-9">
+        <input type="text" name="word" class="form-control">
+      </div>
+      <div class="col-3">
+        <input type="submit" value="Ask!" class="btn btn-secondary">
+      </div>
+    </div>
+  </form>
+</div>
